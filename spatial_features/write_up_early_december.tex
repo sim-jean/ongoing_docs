@@ -115,10 +115,54 @@ Assume each landowner can fence or bait the resource of the other into its patch
 + & \delta \left(p_A((1-f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1}))g_A(e_{A1}) + f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1})g_B(e_{B1}))\right.\\
 & + \left. p_B((1-f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1}))g_B(e_{B1}) + f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})g_A(e_{A1})) \right)
 \end{align*}
+For an interior solution to emerge, the following FOCs need to hold. 
+The optimal escapement FOCs are : 
+\begin{align}
+&\frac{p_A}{\delta \left(p_A + f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})(p_B-p_A)\right)} = g_A'(e_{A1}) \label{eq:ea1}\\
+%
+&\frac{p_B}{\delta \left( p_B + f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1})(p_A-p_B)\right)} = g_B'(e_{B1}) \label{eq:ea2}
+\end{align}
+And the optimal fencing and baiting FOCs are:
+\begin{align}
+c'_{AF}(z_{A1}^F) &= \delta g_A(e_{A1}) \frac{\partial f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})}{\partial z_{A1}^F}\left(p_B - p_A \right) \label{eq:zaf1}\\
+%
+c'_{BF}(z_{B1}^F) &= \delta g_B(e_{B1}) \frac{\partial f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})}{\partial z_{A1}^B}(p_B - p_A) \label{eq:zbf1}\\
+%
+c'_{AB}(z_{A1}^B) &= \delta  g_B(e_{B1})\frac{\partial f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1})}{\partial z_{B1}^F}(p_A - p_B) \label{eq:zab1}\\
+%
+c'_{BB}(z_{B1}^B) & = \delta g_A(e_{A1}) \frac{\partial f_{BA}(z_{B1}^F, z_{A1}^B, d_{AB1})}{\partial z_{B1}^B}(p_{A} - p_{B})
+\label{eq:zbb1}
+\end{align}
+In this context, an interior solution means (i) positive escapement in patches $A$ and $B$ (e.g $e_{i1}>0$), (ii) positive spending in fencing and baiting (e.g. $z_{i1}^k$ with $k \in \{B, F\}$) in patches $A$ and $B$ and (iii) spending in fencing and baiting is not constrained by a maximum in patches $A$ and $B$. 
+\\
+ Consider the case where resources are as valuable in both patches $p_B = p_A$. In this case, equations \ref{eq:zaf1}, \ref{eq:zbf1}, \ref{eq:zab1}, \ref{eq:zbb1} imply no investment in either fencing nor baiting is optimal. In this case, the solution collapses back to the golden rule of renewable resource harvesting, where 
+\begin{align*}
+g'_A(e_{A1}) &= \frac{1}{\delta}\\
+g'_B(e_{B1}) &= \frac{1}{\delta}
+\end{align*}
 
-\section{Infinite horizon}
+Now assume $p_A \neq p_B$ (and for the sake of exposition $p_B > p_A$). Remember that fencing \textit{reduces} dispersal outflow, and baiting \textit{increases} dispersal outflow (e.g. $\frac{\partial f_{AB}}{\partial z_{A1}^F}<0$, $\frac{\partial f_{AB}}{\partial z_{B1}^B}>0$ and reciprocally). Equations \ref{eq:zaf1} and \ref{eq:zab1} show that no investing  in fencing and baiting in $A$ is optimal, as the right hand side is negative. Investing in fencing and baiting is only efficient in $B$ (eq. \ref{eq:zbf1}, \ref{eq:zbb1}). This conforms with economic intuition : if there is an arbitrage opportunity between two locations, it is optimal to leverage it as much as economically possible.
+
+Therefore, no fully interior solution emerges in the optimal 2 patch 2 periods case. \\\\
+
+The optimal solution therefore collapses to : 
+\begin{align*}
+g_A'(e_{A1}) &= \frac{p_A}{\delta \left(p_A + f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})(p_B-p_A)\right)} \\
+%
+g_B'(e_{B1}) &= \frac{p_B}{\delta \left( p_B + f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1})(p_A-p_B)\right)} \\
+%
+c'_{BF}(z_{B1}^F) &= \delta g_B(e_{B1}) \frac{\partial f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})}{\partial z_{A1}^B}(p_B - p_A) \\
+%
+c'_{BB}(z_{B1}^B) & = \delta g_A(e_{A1}) \frac{\partial f_{BA}(z_{B1}^F, z_{A1}^B, d_{AB1})}{\partial z_{B1}^B}(p_{A} - p_{B})
+\end{align*}
+
+
+ For example, assume that we can anticipate the future value of the resource to be larger in patch $B$ than in patch $A$ i.e $\frac{\partial V}{\partial X_{Bt+1}}> \frac{\partial V}{\partial X_{At+1}}$. Remember that dispersal from $B$ to $A$ decreases from fencing in $B$ and increases from baiting in $A$. Therefore, if the future value is larger in $B$ than in $A$, it is optimal not to fence nor bait in $A$, so that the maximal amount of resources migrates to $B$ where it is more beneficial. The 6 FOCs collapse to 4 equations (eq. \ref{eq:foc_eat},\ref{eq:foc_ebt}, \ref{eq:foc_zfb}, \ref{eq:foc_zbb}).
+\\\\
+\section*{Annex}
+\subsection{Infinite horizon}
 In this section, I formulate the problem in a recursive framework, and adopt a resolution approach assuming the value function exists, to characterize the main mechanisms. 
-\subsection{Value function}
+\subsubsection{Value function}
 Given the dynamic nature of the problem, a Bellman equation can be formulated: 
 \begin{equation}
 \begin{aligned}[b]
@@ -131,7 +175,7 @@ Where $X_{t+1}^A = (1-f_{AB}(z^F_{At}, z^B_{Bt}| d_{ABt}))g_A(e_{At})+f_{BA}(z^F
 
 and $X_{t+1}^B =(1 - f_{BA}(z^F_{Bt}, z^B_{At}| d_{BAt}))g_B(e_{BT}) +f_{AB}(z^F_{At}, z^B_{Bt}| d_{ABt})g_A(e_{At})$
 
-\subsection{First order conditions}
+\subsubsection{First order conditions}
 The necessary conditions for interior solutions to hold are :
 
 \begin{align}
@@ -149,11 +193,7 @@ The necessary conditions for interior solutions to hold are :
 \label{eq:foc_zbb}
 \end{align}
 
-In this context, an interior solution means (i) positive escapement in patches $A$ and $B$ (e.g $e_{it}>0$), (ii) positive spending in fencing and baiting (e.g. $z_{it}^k$ with $k \in \{B, F\}$) in patches $A$ and $B$ and (iii) spending in fencing and baiting is not constrained by a maximum in patches $A$ and $B$. \\
-\textbf{Need assumptions on the infinite behavior of the dispersal function;}. 
-\\\\
-The first thing to note is that a full interior solution is not possible : equations \ref{eq:foc_zfa} to \ref{eq:foc_zbb} imply a difference between the future optimal value of the resource in $A$ and $B$. For example, assume that we can anticipate the future value of the resource to be larger in patch $B$ than in patch $A$ i.e $\frac{\partial V}{\partial X_{Bt+1}}> \frac{\partial V}{\partial X_{At+1}}$. Remember that dispersal from $B$ to $A$ decreases from fencing in $B$ and increases from baiting in $A$. Therefore, if the future value is larger in $B$ than in $A$, it is optimal not to fence nor bait in $A$, so that the maximal amount of resources migrates to $B$ where it is more beneficial. The 6 FOCs collapse to 4 equations (eq. \ref{eq:foc_eat},\ref{eq:foc_ebt}, \ref{eq:foc_zfb}, \ref{eq:foc_zbb}).
-\\\\
+
 Under this set of assumptions, the system can be rewritten as : 
 \begin{align}
 p_A &= \delta g'_A(e_{At}) \left(\frac{\partial V}{\partial X_{At+1}} + f_{AB}(0, z_{Bt}^B; d_{ABt})\left[\frac{\partial V}{\partial X_{Bt+1}} - \frac{\partial V}{\partial X_{At+1}}  \right] \right)\\
@@ -178,7 +218,7 @@ $$
 $$
 
 Fourth, it is clear that escapement and fencing and baiting are mutually dependent. To be clearer, escapement in patch $B$ and fencing in $B$ are related, while escapement in $A$ and baiting in $B$ are related. 
-\subsection{Discussion and questions}
+\subsubsection{Discussion and questions}
 \begin{itemize}
 \item Corner solutions do not rely too much on the constant marginal benefits of harvest. The limiting factor for fencing and baiting here is the cost of each action. With a decreasing marginal benefit of harvest, an additional discounted limiting factor would most likely reduce baiting and fencing, but still yield a partially corner solution. In this case, the solution would likely equalize the marginal benefit of harvest in $A$ absent investment to the marginal benefit of harvest in $B$ with optimal fencing and baiting. 
 
@@ -187,17 +227,26 @@ $\Rightarrow$ Is it worth looking into an other formulation such as $V(\mathbf{X
 %\item One way to have state independence maybe can be to (i) reformulate the problem using $V(\mathbf{D}_{t+1}g(\mathbf{e}_t), \mathbf{D}_{t+1})$ and (ii) impose a \textbf{constant marginal cost} of investment in fencing or baiting as well as (iii) 
 \item \cite{costello_optimal_2008} hinges on the "escapement trick" : is there something akin that can be found for dispersal? Can I reframe the choice of future dispersal as a choice within bounds like $M_i$ and $d_{ABt}$ arguing that if a solution is interior, it is state independent? 
 \end{itemize}
-\section{Calibration}
+\subsection{Calibration}
 In order to gain further insights, I calibrate a fictitious model between patches $A$ and $B$. 
 
-First, dispersal between $A$ and $B$ is of the form :
-\begin{equation}
-d_{ABt+1} = m_{AB} + \frac{M_{AB} - m_{AB}}{1+ \exp(-((z_{At}^F)^\kappa - (z_{Bt}^B)^\nu + \beta d_{ABt}))}
-\end{equation}
-This functional form is bounded, decreases with $z_{At}^F$ and increases with $z_{Bt}^B$, and allows for a potential decay of connectivity through time.
+%First, dispersal between $A$ and $B$ is of the form :
+%\begin{equation}
+%d_{ABt+1} = m_{AB} +  \frac{M_{AB} - m_{AB}}{1+ \exp(-((z_{At}^F)^\kappa - (z_{Bt}^B)^\nu + \beta d_{ABt}))}
+%\end{equation}
+%This functional form is bounded, decreases with $z_{At}^F$ and increases with $z_{Bt}^B$, and allows for a potential decay of connectivity through time.
 
-Need to change so that : if $z_{At}^F= z_{Bt}^B = 0$, $d_{ABt+1} = \beta d_{ABt}$, does not work. 
+%Need to change so that : if $z_{At}^F= z_{Bt}^B = 0$, $d_{ABt+1} = \beta d_{ABt}$, does not work. 
 
+\subsubsection{Dispersal}
+Dispersal needs to be such that : 
+\begin{itemize}
+\item if $z_{At}^F = z_{Bt}^B - 0$, then $d_{ABt+1}=\beta d_{ABt}$
+\item Be bounded between $m_{AB}$ and $M_{AB}$
+\item Increasing in baiting, and decreasing in fencing
+\item Different productivities of fencing and baiting determine the overall flow
 
-\section{Early results}
+\item Would be interesting if it can be grounded in some ecological theory, but beyond just density dependent (or how density dependence can be amended).
+\end{itemize}
+$\Rightarrow$ look into a logit function
 \end{document}
