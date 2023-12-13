@@ -32,6 +32,16 @@
 
 \maketitle
 
+\section*{To do :}
+\begin{itemize}
+\item Read Sanchirico and Wilen to check the density dependent thingy
+\item Add the density dependent thingy
+\item Check the jacobian properties
+\item Elaborate on the dependence of future value function to the current state\textbf{s}, not only $\mathbf{X}$ but also $\mathbf{D}$ (which will eventually change $V$ through future costs ajustment, and maybe try to express decision variables as \textit{the difference between max/min connectivity and current connectivity}
+\end{itemize}
+
+\newpage
+
 \section{Motivation}
 Assume a renewable resource whose habitat spans several land patches. The resource freely flows across patches according to some biological, exogenous determinants.  Assume we have 2 patches, A and B, such that the net benefit of harvest in B is larger than in A (people in B may love the resource, while in A they just like it; they may also be more efficient at harvesting it than in A). As people in B do love their resources, they may be tempted to ensure they stay in B and fence their land. They also notice that A has resources, and are tempted to increase the migration flow from A to B, and bait the resource into B. 
 
@@ -43,7 +53,7 @@ Eventually, in the case of a invasive specious or infectious disease, how should
 
 Overall, the question that emerges is: how does the harvest of a renewable resource change when fencing and baiting are considered?
 
-\section{Modeling strategy}
+\section{A density independent approach to endogenous dispersal}
 \subsection{A 2 patch model}
 In each period and each patch, the resource stock $X_{At}$ and $ X_{Bt}$ is harvested at $h_{At}$ and $h_{Bt}$, leaving a remaining stock $e_{At}$ and $ e_{Bt}$ which then grows to $g_A(e_{At})$ and $g_B(e_{Bt})$, with $g'_i()>0$ and $g''_i()<0$. Once it grows, it migrates. For example, in patch $A$, a share $d_{AAt}$ of the stock remains in $A$ in period $t$, while a share $d_{ABt} = 1-d_{AAt}$ flows from $A$ to $B$, and reciprocally for $B$. At the beginning of period $t+1$ : 
 \begin{align}
@@ -107,7 +117,6 @@ First, I'm interested in the social planner's problem, i.e, to maximize the inte
      d_{ABt+1} &= f_{AB}(z^F_{At}, z^B_{Bt}| d_{ABt}) \\
     d_{BAt+1} &= f_{BA}(z^F_{Bt}, z^B_{At}| d_{BAt}) 
 \end{align*}
-\section{A 2-patch 2-periods}
 Assume each landowner can fence or bait the resource of the other into its patch, in a 2 by 2 world. What are the optimal policies? The social planner aims at maximizing : 
 \begin{align*}
 \max_{e_{A1}, e_{A2}, z_{A1}^F, z_{A1}^B, z_{B1}^F, z_{B1}^B}&p_A(X_{A1}-e_{A1}) - c_{AF}(z_{A1}^F) - c_{AB}(z_{A1}^B) \\
@@ -115,6 +124,7 @@ Assume each landowner can fence or bait the resource of the other into its patch
 + & \delta \left(p_A((1-f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1}))g_A(e_{A1}) + f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1})g_B(e_{B1}))\right.\\
 & + \left. p_B((1-f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1}))g_B(e_{B1}) + f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})g_A(e_{A1})) \right)
 \end{align*}
+\subsection{First order conditions for interior solutions}
 For an interior solution to emerge, the following FOCs need to hold. 
 The optimal escapement FOCs are : 
 \begin{align}
@@ -126,20 +136,25 @@ And the optimal fencing and baiting FOCs are:
 \begin{align}
 c'_{AF}(z_{A1}^F) &= \delta g_A(e_{A1}) \frac{\partial f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})}{\partial z_{A1}^F}\left(p_B - p_A \right) \label{eq:zaf1}\\
 %
-c'_{BF}(z_{B1}^F) &= \delta g_B(e_{B1}) \frac{\partial f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})}{\partial z_{A1}^B}(p_B - p_A) \label{eq:zbf1}\\
+c'_{BF}(z_{B1}^F) &= \delta g_B(e_{B1}) \frac{\partial f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1})}{\partial z_{B1}^F}(p_A - p_B) \label{eq:zbf1}\\
 %
-c'_{AB}(z_{A1}^B) &= \delta  g_B(e_{B1})\frac{\partial f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1})}{\partial z_{B1}^F}(p_A - p_B) \label{eq:zab1}\\
+c'_{AB}(z_{A1}^B) &= \delta  g_B(e_{B1})\frac{\partial f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1})}{\partial z_{A1}^B}(p_A - p_B) \label{eq:zab1}\\
 %
-c'_{BB}(z_{B1}^B) & = \delta g_A(e_{A1}) \frac{\partial f_{BA}(z_{B1}^F, z_{A1}^B, d_{AB1})}{\partial z_{B1}^B}(p_{A} - p_{B})
+c'_{BB}(z_{B1}^B) & = \delta g_A(e_{A1}) \frac{\partial f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})}{\partial z_{B1}^B}(p_{B} - p_{A})
 \label{eq:zbb1}
 \end{align}
 In this context, an interior solution means (i) positive escapement in patches $A$ and $B$ (e.g $e_{i1}>0$), (ii) positive spending in fencing and baiting (e.g. $z_{i1}^k$ with $k \in \{B, F\}$) in patches $A$ and $B$ and (iii) spending in fencing and baiting is not constrained by a maximum in patches $A$ and $B$. 
 \\
+\subsection{A homogeneous distribution of net marginal benefits yield a state independent, golden-rule solution}
  Consider the case where resources are as valuable in both patches $p_B = p_A$. In this case, equations \ref{eq:zaf1}, \ref{eq:zbf1}, \ref{eq:zab1}, \ref{eq:zbb1} imply no investment in either fencing nor baiting is optimal. In this case, the solution collapses back to the golden rule of renewable resource harvesting, where 
 \begin{align*}
+z_{A1}^B =& z_{A1}^F = 0\\
+z_{B1}^B =& z_{B1}^F = 0\\
 g'_A(e_{A1}) &= \frac{1}{\delta}\\
 g'_B(e_{B1}) &= \frac{1}{\delta}
 \end{align*}
+
+\subsection{A heterogeneous distribution of net marginal benefits yields an??}
 
 Now assume $p_A \neq p_B$ (and for the sake of exposition $p_B > p_A$). Remember that fencing \textit{reduces} dispersal outflow, and baiting \textit{increases} dispersal outflow (e.g. $\frac{\partial f_{AB}}{\partial z_{A1}^F}<0$, $\frac{\partial f_{AB}}{\partial z_{B1}^B}>0$ and reciprocally). Equations \ref{eq:zaf1} and \ref{eq:zab1} show that no investing  in fencing and baiting in $A$ is optimal, as the right hand side is negative. Investing in fencing and baiting is only efficient in $B$ (eq. \ref{eq:zbf1}, \ref{eq:zbb1}). This conforms with economic intuition : if there is an arbitrage opportunity between two locations, it is optimal to leverage it as much as economically possible.
 
@@ -147,19 +162,115 @@ Therefore, no fully interior solution emerges in the optimal 2 patch 2 periods c
 
 The optimal solution therefore collapses to : 
 \begin{align*}
-g_A'(e_{A1}) &= \frac{p_A}{\delta \left(p_A + f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})(p_B-p_A)\right)} \\
+g_A'(e_{A1}) &= \frac{p_A}{\delta \left(p_A + f_{AB}(0, z_{B1}^B, d_{AB1})(p_B-p_A)\right)} \\
 %
-g_B'(e_{B1}) &= \frac{p_B}{\delta \left( p_B + f_{BA}(z_{B1}^F, z_{A1}^B, d_{BA1})(p_A-p_B)\right)} \\
+g_B'(e_{B1}) &= \frac{p_B}{\delta \left( p_B + f_{BA}(z_{B1}^F, 0, d_{BA1})(p_A-p_B)\right)} \\
 %
-c'_{BF}(z_{B1}^F) &= \delta g_B(e_{B1}) \frac{\partial f_{AB}(z_{A1}^F, z_{B1}^B, d_{AB1})}{\partial z_{A1}^B}(p_B - p_A) \\
+c'_{BF}(z_{B1}^F) &= \delta g_B(e_{B1}) \frac{\partial f_{BA}(z_{B1}^F, 0, d_{BA1})}{\partial z_{B1}^F}(p_A - p_B)\\
 %
-c'_{BB}(z_{B1}^B) & = \delta g_A(e_{A1}) \frac{\partial f_{BA}(z_{B1}^F, z_{A1}^B, d_{AB1})}{\partial z_{B1}^B}(p_{A} - p_{B})
+c'_{BB}(z_{B1}^B) & = \delta g_A(e_{A1}) \frac{\partial f_{AB}(0, z_{B1}^B, d_{AB1})}{\partial z_{B1}^B}(p_{B} - p_{A})
 \end{align*}
 
+First, while the equations governing the optimal escapement in patch $A$ and $B$ resemble Costello and Polasky (2008) in an exogenous dispersal framework, they substantially differ as $e_{A1}^*, e_{B1}^*, z_{B1}^{B*}, z_{B1}^{F*}$ are jointly determined, and are therefore \textit{not state independent}, as they depend on $d_{AB1}$.
 
- For example, assume that we can anticipate the future value of the resource to be larger in patch $B$ than in patch $A$ i.e $\frac{\partial V}{\partial X_{Bt+1}}> \frac{\partial V}{\partial X_{At+1}}$. Remember that dispersal from $B$ to $A$ decreases from fencing in $B$ and increases from baiting in $A$. Therefore, if the future value is larger in $B$ than in $A$, it is optimal not to fence nor bait in $A$, so that the maximal amount of resources migrates to $B$ where it is more beneficial. The 6 FOCs collapse to 4 equations (eq. \ref{eq:foc_eat},\ref{eq:foc_ebt}, \ref{eq:foc_zfb}, \ref{eq:foc_zbb}).
-\\\\
+Second, the stocks must be harvested down to the point where the current forgone net marginal benefit equals the discounted future marginal benefits at the social scale, that is, the marginal value of the units remaining in the own patch and of the units \textit{endogenously} migrating to the other patch. A \textit{golden rule} type of solution can emerge in the case where $f_{AB}()= f_{AB}()=0$ and $\frac{\partial f_{AB}}{\partial z_{B1}^F} = \frac{\partial f_{AB}}{\partial z_{B1}^B}=0$, that is to say when there is no spatial process.
+
+Third, the optimal allocation between fencing and baiting is such that the actualized, productivity weighted, per resource unit, marginal cost of each options are equalized: 
+
+$$
+\frac{c'_{BF}(z_{B1}^F)}{- \frac{\partial f_{BA}(z_{B1}^F, 0, d_{BA1})}{\partial z_{B1}^F}}\frac{1}{\delta g_{B}(e_{B1})} = \frac{c'_{BB}(z_{B1}^B)}{- \frac{\partial f_{AB}(0, z_{B1}^B, d_{AB1})}{\partial z_{B1}^B}}\frac{1}{\delta g_{A}(e_{A1})}
+$$
+The intuition is straightforward : the social planner invests in either option until the point where the discounted marginal benefit of increasing (resp. decreasing) the inflow (resp. the outflow) of the resource in (resp. outside) the patch equals its cost.
+
+Eventually, it is not clear how fencing and baiting relate to optimal escapement in the social optimum (the comparative statics are ugly to derive)
+\begin{enumerate}
+\item Find the total derivative of each line
+\item Find the number of derivatives we want to get
+\item Put the problem in the Cramer's rule form and Jacobian analysis
+
+Finally, note that the first order conditions for $e_{A1}^*$ and $z_{B1}^{B*}$ for an independent system from the FOCs determining $e_{B1}^*$ and $z_{B1}^{B*}$. Therefore, we can analyze the joint system with two independent subsystems. Moreover, given the partially corner solution, we can reframe dispersal, as a dimension is fixed, as a 2 dimension, additive process: $f_{AB}(0, z_{B1}^B; d_{AB1}) \equiv \omega_d(d_{AB1}) + \omega_z \left(z_{B1}^B \right)$, and $f_{BA}(z_{B1}^F, 0 ; d_{BA1}) \equiv \psi_d(d_{BA1}) + \psi_z \left(z_{B1}^B \right)$ such that $\psi_z'()<0, \psi_z''()>0$ and $\omega_z'()>0, \omega_z''()<0$ (see figure 2), and $\omega_d'()>0$ and $\Psi_d'()>0$
+
+In the appendix \ref{sec:jacobian}, I derive the comparative statics of the implicit functions defined by the two subsystems relating $e_{A1}$ and $z_{B1}^B$; and $e_{B1}$ and $z_{B1}^F$.
+
+\begin{figure}
+	\label{fig:additive_dispersal}
+	\begin{center}
+		\begin{tikzpicture}
+    % Draw grid
+    \draw[thick, ->, black](0,0) -- (0,5) node[anchor = south]{$f_{AB}$ and $f_{BA}$};
+    \draw[thick, ->, black](0,0) -- (5,0) node[anchor = north]{$z_{B1}$};
+    % Draw horizontal lines
+    \draw[dotted, red] (5,4) -- (0,4) node[anchor=east]{$M_{BA}$}; % y=8 line
+    \draw[dotted, red] (5,1) -- (0,1) node[anchor=east]{$m_{BA}$}; % y=1 line
+    % Draw the curve
+    \draw[dotted, red](5,2) -- (0,2) node[anchor = east]{$\Psi_d(d_{BA1})$};
+    \draw[thick,red,smooth] plot[domain=0:5] (\x,{2 - 0.3*\x^0.5}) node[anchor = west]{$\Psi_z\left(z_{B1}^F\right)$};
+     \draw[blue,smooth] plot[domain=0:5] (\x,{2.5 + 0.3*\x^0.5}) node[anchor = west]{$\omega_z\left(z_{B1}^B\right)$};
+     \draw[dotted, blue](5,2.5) -- (0,2.5) node[anchor = east]{$\omega_d(d_{AB1})$};
+    \draw[dotted, blue] (5,3.5) -- (0,3.5) node[anchor=east]{$M_{AB}$}; % y=8 line
+    \draw[dotted, blue] (5,.5) -- (0,.5)node[anchor=east]{$m_{AB}$};
+    % Note: Adjust the function inside the plot command to get the desired curve shape
+
+		\end{tikzpicture}
+		\caption{Dispersal with partially corner solution}
+	\end{center}
+\end{figure}
+
+
+
+\end{enumerate}
 \section*{Annex}
+\subsection{Subsystems analysis : comparative statics}
+\label{sec:jacobian}
+\subsubsection{Optimal escapement and fencing in patch $B$}
+Using equations \ref{eq:ea2} and \ref{eq:zbf1} to define a set of implicit solutions : 
+\begin{align*}
+g'_B(e_{B1}) \delta \left( p_B + (\Psi_z(z_{B1}^F) + \Psi_d(d_{BA1})\right)(p_A - p_B) - p_A &= 0\\
+%
+c'_{BF}(z_{B1}^F) - \delta g_B(e_{B1}) \Psi_z'(z_{B1}^F)(p_A -p_B)&=0
+\end{align*}
+Taking total differential : 
+\begin{align*}
+g''_B(e_{B1})\delta \left[p_B + \Psi_z(z_{B1}^F) + \Psi_d(d_{BA1})(p_A-p_B)\right] de_{B1} + g_B'(e_{B1}) & \delta (p_A - p_B)\left( \Psi_z'(z_{B1}^F)dz_{b1}^F + \Psi_d'(d_{BA1})d(d_{BA1}) \right) = 0\\
+\left(c''_{BF}(z_{B1}^F) - \delta g_B(e_{B1})\Psi''_z(z_{B1}^F)(p_A - p_B)\right) dz_{B1}^F & - \delta g'_B(e_{B1}) \Psi_z(z_{B1}^F)(p_A-p_B)de_{B1}=0
+\end{align*}
+
+And put in matrix form
+\begin{equation*}
+\begin{bmatrix}
+g''_B(e_{B1}) \delta \left(p_B + (\Psi_z(z_{B1}^F) \right. & \delta g'_B(e_{B1})(p_A - p_B)  \\
+%
+\left. + \Psi_d(d_{BA1}))(p_A-p_B) \right) & \times \Psi'_z(z_{B1}^F)
+\\
+\\
+ - \delta g_B'(e_{B1}) & c''_{BF}(z_{B1}^F) - \delta g_B(e_{B1}) \\
+\times (p_A - p_B)\Psi_z'(z_{B1}^F) & \times \Psi''_z(z_{B1}^F)(p_A - p_B)
+\end{bmatrix} 
+\times
+\begin{bmatrix}
+de_{B1}\\
+dz_{B1}^F
+\end{bmatrix} = 
+\begin{bmatrix}
+(p_B - p_A) \delta g'_B(e_{B1})\Psi_d'(d_{BA1})\\
+0
+\end{bmatrix}
+d(d_{BA1})
+\end{equation*}
+Let the determinant of the above Jacobian matrix be $det(J) = J_{11}J_{22} - J_{12}J_{21}$ with
+\begin{align*}
+J_{11} & = g''(e_{B1})\delta \left( p_B + (\Psi_z(z_{B1}^F) + \Psi_d(d_{BA1}))(p_A - p_B)\right) <0 \\
+J_{12} & =  g'_{B}(e_{B1})\delta (p_A - p_B) \Psi_z'(z_{B1}^F) >0 \\
+J_{21} & = - J_{12} <0 \\
+J_{22} & = c''_{BF}(z_{B1}^F) - \delta g_B(e_{B1})(p_B - p_A) \Psi''_z(z_{B1}^F)
+\end{align*}
+\textbf{Issue with the computation of the Jacobian and the conditions. }
+ \begin{itemize}
+ \item If $J_{22} < 0$, then $|J|>0$
+ \item if $J_{22} >0$ and $J_{12}J_{21}>J_{11}J_{22}$, then $|J|>0$
+ \item if not, $|J|<0$. 
+ \end{itemize}
+$\Rightarrow$ A wide array of results emerge, but under mild conditions, intuitive results arise (eg, stock remaining increases in existing dispersal), investment decreases in existing dispersal, and investment and stock are substitutes
 \subsection{Infinite horizon}
 In this section, I formulate the problem in a recursive framework, and adopt a resolution approach assuming the value function exists, to characterize the main mechanisms. 
 \subsubsection{Value function}
