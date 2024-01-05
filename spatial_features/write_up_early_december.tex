@@ -13,7 +13,7 @@
                      right = 2cm]{geometry}
 
 
-\title{Fences and baits : landscape connectivity in renewable resources}
+\title{Fences and baits : network formation and landscape connectivity in renewable resources}
 \author{Simon Jean}
 \date{December 2023}
 
@@ -32,13 +32,13 @@
 
 \maketitle
 
-\section*{To do :}
-\begin{itemize}
-\item Read Sanchirico and Wilen to check the density dependent thingy
-\item Add the density dependent thingy
-\item Check the jacobian properties
-\item Elaborate on the dependence of future value function to the current state\textbf{s}, not only $\mathbf{X}$ but also $\mathbf{D}$ (which will eventually change $V$ through future costs ajustment, and maybe try to express decision variables as \textit{the difference between max/min connectivity and current connectivity}
-\end{itemize}
+%\section*{To do :}
+%\begin{itemize}
+%\item Read Sanchirico and Wilen to check the density dependent %thingy
+%\item Add the density dependent thingy
+%\item Check the jacobian properties
+%\item Elaborate on the dependence of future value function to the current state\textbf{s}, not only $\mathbf{X}$ but also $\mathbf{D}$ (which will eventually change $V$ through future costs ajustment, and maybe try to express decision variables as \textit{the difference between max/min connectivity and current connectivity}
+%\end{itemize}
 
 \newpage
 
@@ -102,7 +102,7 @@ The timing of the model is synthetized in figure \ref{fig:timing}.
 
 
 \subsection{Model formulation}
-Landowners locally harvest the resource at a \textit{constant unit marginal cost} $\omega_i$ and sell it on a competitive market at price $p$, so the net marginal benefit is heterogeneous and can be written as $p_i = p - c_i$. Moreover, they choose fencing and baiting expenditures with costs $c_{i,l}(z_{it}^F)$ such that $c'_{i,l}\geq 0$ and $c''_{i,l} \geq 0$, and normalized such that $c_{i,l}(0) = 0$. The profit flow at time $t$ is
+Landowners locally harvest the resource at a \textit{constant unit marginal cost} $\omega_i$ and sell it on a competitive market at price $p$, so the net marginal benefit is heterogeneous and can be written as $p_i = p - \omega_i$. Moreover, they choose fencing and baiting expenditures with costs $c_{i,l}(z_{it}^F)$ such that $c'_{i,l}\geq 0$ and $c''_{i,l} \geq 0$, and normalized such that $c_{i,l}(0) = 0$. The profit flow at time $t$ is
 \begin{equation}
     \Pi_{it} = p_i(X_{it} - e_{it}) - c_{i,F}(z_{it}^F) - c_{i,B}(z_{it}^B)
 \end{equation}
@@ -154,9 +154,9 @@ g'_A(e_{A1}) &= \frac{1}{\delta}\\
 g'_B(e_{B1}) &= \frac{1}{\delta}
 \end{align*}
 
-\subsection{A heterogeneous distribution of net marginal benefits yields an??}
+\subsection{Heterogeneous distribution of net marginal benefits }
 
-Now assume $p_A \neq p_B$ (and for the sake of exposition $p_B > p_A$). Remember that fencing \textit{reduces} dispersal outflow, and baiting \textit{increases} dispersal outflow (e.g. $\frac{\partial f_{AB}}{\partial z_{A1}^F}<0$, $\frac{\partial f_{AB}}{\partial z_{B1}^B}>0$ and reciprocally). Equations \ref{eq:zaf1} and \ref{eq:zab1} show that no investing  in fencing and baiting in $A$ is optimal, as the right hand side is negative. Investing in fencing and baiting is only efficient in $B$ (eq. \ref{eq:zbf1}, \ref{eq:zbb1}). This conforms with economic intuition : if there is an arbitrage opportunity between two locations, it is optimal to leverage it as much as economically possible.
+Now assume $p_A \neq p_B$ (and for the sake of exposition $p_B > p_A$). Remember that fencing \textit{reduces} dispersal outflow, and baiting \textit{increases} dispersal outflow (e.g. $\frac{\partial f_{AB}}{\partial z_{A1}^F}<0$, $\frac{\partial f_{AB}}{\partial z_{B1}^B}>0$ and reciprocally). Equations \ref{eq:zaf1} and \ref{eq:zab1} show that no investing  in fencing and baiting in $A$ is optimal, as the right hand side is negative. Investing in fencing and baiting is only efficient in $B$ (eq. \ref{eq:zbf1}, \ref{eq:zbb1}). This conforms with economic intuition : if there is an arbitrage opportunity between two locations, it is optimal to leverage it as much as economically possible e.g maximize the flow of resource sold in $B$ rather than in $A$ through fencing and baiting. 
 
 Therefore, no fully interior solution emerges in the optimal 2 patch 2 periods case. \\\\
 
@@ -182,15 +182,11 @@ $$
 $$
 The intuition is straightforward : the social planner invests in either option until the point where the discounted marginal benefit of increasing (resp. decreasing) the inflow (resp. the outflow) of the resource in (resp. outside) the patch equals its cost.
 
-Eventually, it is not clear how fencing and baiting relate to optimal escapement in the social optimum (the comparative statics are ugly to derive)
-\begin{enumerate}
-\item Find the total derivative of each line
-\item Find the number of derivatives we want to get
-\item Put the problem in the Cramer's rule form and Jacobian analysis
-
-Finally, note that the first order conditions for $e_{A1}^*$ and $z_{B1}^{B*}$ for an independent system from the FOCs determining $e_{B1}^*$ and $z_{B1}^{B*}$. Therefore, we can analyze the joint system with two independent subsystems. Moreover, given the partially corner solution, we can reframe dispersal, as a dimension is fixed, as a 2 dimension, additive process: $f_{AB}(0, z_{B1}^B; d_{AB1}) \equiv \omega_d(d_{AB1}) + \omega_z \left(z_{B1}^B \right)$, and $f_{BA}(z_{B1}^F, 0 ; d_{BA1}) \equiv \psi_d(d_{BA1}) + \psi_z \left(z_{B1}^B \right)$ such that $\psi_z'()<0, \psi_z''()>0$ and $\omega_z'()>0, \omega_z''()<0$ (see figure 2), and $\omega_d'()>0$ and $\Psi_d'()>0$
+Finally, note that the first order conditions for $e_{A1}^*$ and $z_{B1}^{B*}$ from an independent system from the FOCs determining $e_{B1}^*$ and $z_{B1}^{B*}$. Therefore, we can analyze the joint system with two independent subsystems. Moreover, given the partially corner solution, we can reframe dispersal, as a dimension is fixed, as a 2 dimension, additive process: $f_{AB}(0, z_{B1}^B; d_{AB1}) \equiv \omega_d(d_{AB1}) + \omega_z \left(z_{B1}^B \right)$, and $f_{BA}(z_{B1}^F, 0 ; d_{BA1}) \equiv \psi_d(d_{BA1}) + \psi_z \left(z_{B1}^B \right)$ such that $\psi_z'()<0, \psi_z''()>0$ and $\omega_z'()>0, \omega_z''()<0$ (see figure 2), and $\omega_d'()>0$ and $\Psi_d'()>0$
 
 In the appendix \ref{sec:jacobian}, I derive the comparative statics of the implicit functions defined by the two subsystems relating $e_{A1}$ and $z_{B1}^B$; and $e_{B1}$ and $z_{B1}^F$.
+
+I think my results are off : they either show that escapement increases with dispersal from $B$ to $A$, and so does fencing; or that escapement decreases with dispersal from $B$ to $A$ but so does fencing. In this case, \textit{escapement and fencing are complement}. I believe it should be the opposite : when dispersal increases, escapement should be reduced, and fencing should increase. 
 
 \begin{figure}
 	\label{fig:additive_dispersal}
@@ -216,9 +212,12 @@ In the appendix \ref{sec:jacobian}, I derive the comparative statics of the impl
 	\end{center}
 \end{figure}
 
-
-
+\section{To do next }
+\begin{enumerate}
+\item I think the results are off but I'm on a good path to fix them or at least understand them
+\item I tried to develop a model over more than two periods), but I think my formulation is off (see the infinite horizon appendix section) : I think I do not catch the change of value from dispersion, because the value function derivative ends up changing with just the population state variable, while a different initial dispersal would change welfare, intuitively, if one has to pay for dispersal changing devices. 
 \end{enumerate}
+\newpage
 \section*{Annex}
 \subsection{Subsystems analysis : comparative statics}
 \label{sec:jacobian}
@@ -262,15 +261,24 @@ Let the determinant of the above Jacobian matrix be $det(J) = J_{11}J_{22} - J_{
 J_{11} & = g''(e_{B1})\delta \left( p_B + (\Psi_z(z_{B1}^F) + \Psi_d(d_{BA1}))(p_A - p_B)\right) <0 \\
 J_{12} & =  g'_{B}(e_{B1})\delta (p_A - p_B) \Psi_z'(z_{B1}^F) >0 \\
 J_{21} & = - J_{12} <0 \\
-J_{22} & = c''_{BF}(z_{B1}^F) - \delta g_B(e_{B1})(p_B - p_A) \Psi''_z(z_{B1}^F)
+J_{22} & = c''_{BF}(z_{B1}^F) - \delta g_B(e_{B1})(p_A - p_B) \Psi''_z(z_{B1}^F)>0
 \end{align*}
-\textbf{Issue with the computation of the Jacobian and the conditions. }
- \begin{itemize}
- \item If $J_{22} < 0$, then $|J|>0$
- \item if $J_{22} >0$ and $J_{12}J_{21}>J_{11}J_{22}$, then $|J|>0$
+
+
+The determinant depends on the relative magnitude of $J_{11}, J_{12},J_{12}, J_{21}$:
+ \begin{enumerate}
+ \item if $-J_{12}J_{21}>J_{11}J_{22}$, then $|J|>0$
  \item if not, $|J|<0$. 
- \end{itemize}
+ \end{enumerate}
 $\Rightarrow$ A wide array of results emerge, but under mild conditions, intuitive results arise (eg, stock remaining increases in existing dispersal), investment decreases in existing dispersal, and investment and stock are substitutes
+
+\subsubsection{Subcase 1}
+In this case, using Cramer's rule : 
+\begin{align*}
+\frac{de_{B1}}{d(d_{BA1})} &>0\\
+\frac{dz_{B1}^F}{d(d_{BA1})} & >0 \\ 
+\end{align*}
+
 \subsection{Infinite horizon}
 In this section, I formulate the problem in a recursive framework, and adopt a resolution approach assuming the value function exists, to characterize the main mechanisms. 
 \subsubsection{Value function}
