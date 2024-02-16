@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{bm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikz}
+\usepackage{float}
+\usepackage[round]{natbib}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!80!black},
+    urlcolor={red!50!black}
+}
+\usepackage{setspace}
+
+\usepackage[autostyle]{csquotes}
+
+
+
+
+\bibliographystyle{plainnat}
+\usepackage[a4paper, top = 2.5cm,
+                     bottom = 2.5cm,
+                     left = 2.5cm,
+                     right = 2.5cm]{geometry}
+
+
+\title{Private provision of public goods in endogenous renewable resource networks}
+\author{Simon Jean}
+
+
+\begin{document}
+\maketitle
+\section{Introduction}
+Motivation
+\begin{itemize}
+    \item SDG 15: key for the identification and planning of networks of protected areas or other area-based management tools but also for assessing the functional need for ecological corridors connecting different sites.
+    \item SDG 7
+    \item See CMS report
+\end{itemize}
+
+
+Connectivity is essential for renewable resources, whether goods or threats. Not only is it an inherent feature of certain landscapes at a macro scale, but it also features a human ecology dimension. Land planning choices define landscape connectivity : the amount of conserved land across the landscape, the quality of the links between patches etc. Rival uses can decrease the incentives to keep patches natural, such as agriculture and cattle. Other practices, such as fencing, reduces the potential for species migration while increasing the returns to agriculture. 
+
+At the individual scale, maintaining habitat and species populations is hampered by the very of notion of connectivity. As a matter of fact, because resources disperse, they feature a public good nature as neighbors may enjoy a benefit flow while not having contributed to the efforts of maintaining species population. While connectivity is an essential ecological feature to remediate species collapse, it turns out to be one of the very economic features that cause said collapse.
+
+Maintaining habitat and promoting connectivity presents an ongoing economic, ecological, dynamic and spatial challenge. In this context, what are policy tools that can be leveraged to remedy species collapse? More precisely, what are spatially targeted policies that can trigger transitions to welfare enhancing equilibria? In more applied terms, are there spatially explicit mechanisms such as agglomeration bonuses that can increase ecological connectivity e.g increase habitat and the links between them?
+
+This article builds on two strands of literature, related respectively to the optimal harvest of spatial resources and public good provision in networks.
+
+First, in the literature on spatially connected resources, \cite{brown_metapopulation_1997} study a model of metapopulation with private property and a common pool for barnacles in an optimization framework, but assume uniform connectivity accross space. While it paves the way for further research, this approach \textit{de facto} limits the role played by space. \cite{sanchirico_bioeconomics_1999} develop a more general framework of spatial connectivity in a discrete patchy environment, and analyze the consequences of spatial processes in the Clark model of open access fishery. They include dispersal patterns that can depend on relative densities, following a gravity equation. As they adopt an \enquote{open access} perspective, they do not investigate the optimal harvest rules that take into account endogenous dispersal while paving the way for such an analysis. \cite{costello_optimal_2008} develop a discrete, stochastic model for the optimal harvest of a spatially distributed resource. They investigate the presence of interior and corner solutions (e.g. positive or null harvest), and find an elegant, time and state independent general solution to the optimal harvest problem. They find a constant, patch specific harvest rule to be optimal. Economic and biological heterogeneity across space cause different harvest rates. Eventually, dispersal patterns affect optimal harvests. \cite{costello_optimal_2008} thus derive an optimal solution in a state independent context, that does not acknowledge the endogeneity of dispersal processes. My approach acknowledges the endogenous nature of dispersal processes through different action margins, and shows that accounting for the endogenous nature of dispersal changes optimal harvest, and optimal no-take zones. \cite{fabbri_competition_2022} use fixed, weighted directed graphs to model the dynamics of a spatially distributed population that grows linearly. They find similar results to \cite{costello_optimal_2008} in a graph theoretical framework, and show that designing cost effective reserves in an network can be done using the notion of eigencentrality of a graph.  \cite{costello_private_2017} tackles the private eradication of mobile public bads and connects the optimal resource management resource to the public good literature. They consider the non-cooperative equilibrium when private landowners control a stock of a spatially distributed public bad which causes non linear damages and incurs non linear costs of control. They derive the conditions under which the Markov Perfect Nash Equilibrium results in large or low public bad control provision. Depending on the distribution of marginal damages and costs to eradication, they show that subsets of the landscape emerge where eradication is optimal, while others only control. As dispersal remains exogenous, their model can be interpreted as a generalization of \cite{bramoulle_public_2007}, in a directed, weighted graph setting with non-linear payoffs. In the present article, I use a dispersal matrix that depends on choice variables, although constrained by exogenous, immutable parameters. I study how different action margins affect dispersal, and how the interplay between population stocks and connectivity decisions affect the optimal harvesting strategies.\\
+
+Indeed, pioneering the literature on public goods in networks, \cite{bramoulle_public_2007} characterize the equilibria emerging from varying undirected, unweighted network structures, in the case of linear payoffs to the public good, and show that networks structure can lead to specialization (e.g. optimal contribution \textit{v.} free-riding), where agents position in the network determine if they contribute or not. In their framework, specialization can lead to welfare benefits, when contributors are linked to many other individuals. Eventually, they show that more links can lead to welfare reduction, as access to the public good increases and reduces individual incentives to contribute. \cite{bramoulle_strategic_2014} extend this framework to relate graph theoretical statistics applied to fixed, non directed graphs and the existence, multiplicity, and stability of static Nash equilibria. Using spectral graph theory and potential games with in linear best reply games, they show that the lowest eigenvalue is the key statistic in the presence of strategic substitutes. It measures the direct effects of agents onto one another : when one increases its contribution, others tend to reduce it, triggering chain reactions. When the lowest eigenvalue is large, effects can take multiple directions and Nash equilibria are multiple. With low mininimal eigenvalue, the effects are dampened, and a unique equilibrium emerges. Considering two action margins, \cite{chen_multiple_2018} extend results from the single action margin in the case of quadratic games with linear best-reply functions, thus paving the way to analyze the interplay of multiple action margins in the dynamic equilibrium of ecological economic networks. \cite{elliott_network_2019} focus on non-rival heterogeneous benefits and show that the Pareto efficient outcome can be characterized using a network of marginal externalities in a public good problem. They show that the Pareto efficient is such that the largest eigenvalue of this network is 1. Finally this article extends \cite{griffith_continuous_2022}, who develops a model of network formation allowing for asymetric, weighted links, when agents maximize their utility, including a public good, with continuous links. \cite{griffith_continuous_2022} shows that Nash equilibria, in a static setting, depend on the returns to scale of \enquote{link surplus} (e.g the surplus from forming links). I extend this approach to the case of spatial natural resources, where harvesting and connectivity decisions have returns that depend on others decisions. 
+In this article, I adopt a dynamic perspective, and I use graph theoretical statistics to characterize the optimal network (i.e population, harvesting, dispersal) structure,  and the intertemporal Nash equilibria. Indeed, as landowners are concerned about the long term ecosystem health, they dynamically contribute to a public good when deciding how to harvest and invest in connectivity. I account for heterogeneity in initial economic and ecological conditions to characterize the evolution of networks. Eventually, I find policies to reconcile the optimal and non cooperative equilibria and characterize these policies with graph theoretical statistics e.g. eigenvalues. \\
+\textbf{results}
+
+\section{A model of endogenous ecological network}
+
+Assume that a landscape is divided in equal patches $i \in \{1, ..., N\}$\footnote{This hypothesis will be relaxed later on - maybe in a different paper - considering heterogeneous land allocations} normalized to 1. Land can be used for two rival uses - agriculture and species habitat - such that $1 = N_{it} + A_{it}$. 
+
+If a patch is used for agriculture, the landowner can fence its land to increase returns. For example, if land is devoted to grazing for cattle, fencing reduces the management costs. Moreover, if land is used for crops, fencing may decrease management costs as well. She gets an average return on land of $w_i(f_{it})$ with $\frac{\partial w}{\partial f_{it}}>0$ and $\frac{\partial^2 w}{\partial f_{it}^2}<0$. Fencing is costly, with increasing marginal cost $c_i(f_{it})$
+
+
+On the other hand, land can be allocated to habitat. In that case, a single species is used as a focal species for ecosystem management. In patch $i$ in period $t+1$, after the species is harvested, the pre-migration population is
+\begin{equation}
+    \Tilde{X}_{it+1} = g(X_{it}-h_{it}, N_{it}|\Phi_i)
+\end{equation}
+The larger the remaining population in time $t$, the larger it is in $t+1$. However, as resources per capita become rarer, species population grows at a declining rate, therefore
+$\frac{\partial g }{\partial (X_{it}-h_{it})}>0$, $\frac{\partial^2 g}{\partial (X_{it}-h_{it})^2}<0$. 
+Moreover, increasing the carrying capacity of the ecosystem increases population at a ??? rate, and the population increases with both population and carrying capacity eg. natural space (cross derivatives are positive). Eventually, $\Phi_i$ measures the spatial heterogeneity among biological productivities.
+
+The species population disperses across space. Dispersal between patch $i$ and $j$ in : 
+\begin{itemize}
+    \item it increases with the difference in patch-specific densities
+    \item Decreases with fencing, e.g. outflow and inflow: the returns to ecological investments are lowered. 
+    \item Bounded
+    \item Should it depend on other's decisions? Like assume I have a patch and another one, three patches left. Is the direct connectivity between these two patches dependent on the 3 in the middle?
+\end{itemize}
+
+\end{document}
