@@ -1,0 +1,270 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{bm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikz}
+\usepackage{float}
+\usepackage[round]{natbib}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!80!black},
+    urlcolor={red!50!black}
+}
+\usepackage{setspace}
+
+\usepackage[autostyle]{csquotes}
+
+
+
+
+\bibliographystyle{plainnat}
+\usepackage[a4paper, top = 2.5cm,
+                     bottom = 2.5cm,
+                     left = 2.5cm,
+                     right = 2.5cm]{geometry}
+
+
+\title{Disconnect or Respect: The Dilemma of Spatial Externality in Ecological Networks\footnote{I am grateful to Lauriane Mouysset and Christopher Costello, as well as seminar participants at BINGO for their helpful comments.}}
+
+\author{Simon Jean\thanks{Centre International de Recherche sur l'Environnement et le Développement, Nogent sur Marne, France; \href{mailto:simon.jean.d2@gmail.com}{simon.jean.d2@gmail.com}}}
+
+\begin{document}
+
+\begin{singlespace}
+
+\maketitle
+
+\center
+
+\textbf{Preliminary and Incomplete. \\ Please do not cite or circulate.}
+
+\flushleft
+
+\begin{abstract}
+    Abstract
+\end{abstract}
+\end{singlespace}
+
+\clearpage
+\onehalfspacing
+\section{Introduction}
+The \href{https://www.cbd.int/doc/decisions/cop-15/cop-15-dec-04-en.pdf}{Keunming-Montreal Global Biodiversity Framework}, adopted by 195 parties of the Convention on Biological Diversity in December 2022 sets ambitious targets for biodiversity conservation, to halt the overall decline in biodiversity. Goal A and the corresponding targets 1 to 8 set ambitious targets for conservation and ecological restoration, including the famous 30\% objective, whereby 30\% of land, water, coastal and marine areas are protected by 2030\footnote{See Target 3 in the \href{https://www.cbd.int/doc/decisions/cop-15/cop-15-dec-04-en.pdf}{Kunming Montreal Global Biodiversity Framework}}. In more detail, goal A states \textit{``the integrity, connectivity and resilience of all ecosystems are maintained, enhanced or restored [...] Humand induced extinction of known threatened species is halted''}. 
+Taken altogether, these ambitious objectives call for an integrated approach to biodiversity loss, recognizing that the sustainable use of renewable resources is broader than managing the harvest rate of said resource\footnote{Indeed, headline indicators linked to the monitoring of Goal A and Targets 1-8 focus on population sizes and land cover, thus hinting at the harvest rates and land cover choices as primary measures. The set of ``component'' and ``complementary'' indicators (eg. optional indicators to monitor goals and targets) are broader than the mere harvest rate, and include land use indicators pertaining to landscape connectivity such as the \href{https://www.eea.europa.eu/data-and-maps/figures/forest-fragmentation-in-eu-member-states}{Forest Fragmentation Index}, the Biodiversity Habitat Index \citep{harwood_bhi_2022}, the Protected Areas Network Metric \citep{theobald_simple_2022}}, and includes habitat connectivity.
+
+In the case of mobile public bads \citep{costello_private_2017}, policies mostly focus on the management of connectivity patterns: boats are inspected for alien invasive species, fuel breaks are designed to avoid wildfire spread across the Western United States, Australia and Europe. During the COVID pandemic, widespread lockdowns were used to reduce its rate of spread locally and globally. However, the economic literature on spatial renewable resources hardly tackles the endogenous nature of connectivity patterns and network formation.  
+
+The connectivity of spatial renewable resources, whether goods or bads, creates a spatial externality. Unless a resource is completely harvested (or culled), spatial connectivity implies that after it grows, the resource will flow to other patches. In doing so, it will benefit (or cost) neighboring patches in the case of a renewable good (or bad). Devices nonetheless impact the pattern of spatial connectivity, such as fences. Fences keep the resource inside (e.g. reduce outflow) and, to some extent, create an outside (e.g. reduce inflow), and therefore limit the extent of the spatial externality. In the case where resources are not connected, they are efficiently managed for different values (e.g harvesting and conservation), even in a non-cooperative equilibrium \citep{costello_optimal_2008}. Compared to a policy where fencing is forbidden, allowing fencing is expected to increase efficiency in the non-cooperative equilibrium, and to reduce (resp. increase) the harvesting (resp. culling) rate of the spatial good (resp. bad), thus making fencing a particularly appealing solution for real life applications. In some cases, the non-cooperative equilibrium can be expected to coincide with the first best outcome, where a sole owner would optimally manage connectivity. However, in some cases, it may undo what nature has rightfully done. For non-trivial spatial patterns of biological and economic heterogeneity, while allowing fencing can increase welfare compared to a no fencing policy, it may fail to achieve the first best outcome in a non cooperative equilibrium, although the spatial externality is reduced. 
+
+Overall, this article is concerned with the emergence of ecological economic network as a result of spatial heterogeneity. It revisits the optimal management of spatially distributed renewable resources as it investigates how fencing and harvesting are jointly determined. Second, it investigates the dynamic Nash equilbrium network structure that emerges in the specific context of renewable resources. Third, it looks at how mechanisms correcting sources of inefficiencies - e.g. spatial externalities - actually increase or decrease welfare. Finally, it investigates how policies can be leveraged to increase welfare, with varying preferences between conservation and harvesting. 
+
+In this article, I use a spatially distributed population dynamics model with local harvest. Economic and biological layers of heterogeneity are included to investigate the parameter spaces in which a decentralized equilibrium may result in a first best allocation. I use a graph theoretical approach to characterize the sole owner and non cooperative equilibria. Eventually, I use graph statistics to identify the key nodes for policy intervention.
+
+
+
+%\subsection{The question}
+%Most approaches consider connectivity as given, or dependent on relative population densities. What I look at is different, as it tackles the very notion of connectivity and network formation. 
+
+%Connectivity of spatially connected renewables creates a spatial externality : if I over (or under) harvest (cull) a resource, it will pass in the next period onto my neighbors, who may incur a benefit (or loss), which they have not contributed to. However, action margins, including fencing can change the pattern of connectivity. Fences keep the resource inside (e.g reduce outflow), and effectively reduce the extent of the spatial externality. In a non cooperative equilibrium, allowing for fencing can result in a spatially heterogeneous golden rule harvest profile in each patch, where the resource is harvested down to the point where the discounted benefit equals the patch specific marginal productivity of the resource. However, from a social planner - or sole owner - perspective, there are connectivity patterns e.g spatial externality structures, that can be welfare increasing. For example, if the resource follows a sink-source pattern, where the resource flows to a high marginal benefit patch, little to no fence is optimal. 
+
+%Consider a simple example with 2 patches, featuring the same biological growth functions, and differing only through the net marginal benefit they extract from harvesting the resource. Assume that connectivity can be managed with no cost, and integrally decided upon. Let $A$ be such that the marginal benefit is larger than in $B$. In a first best world, patch owner $A$ only fences if the net marginal benefit from retaining more resource exceeds the cost of foregoing the inflow of resource from $B$. In a non cooperative setting, patch owner $A$ fences as long as it expects the returns to fencing e.g the value of retained resources from fencing to be larger than the foregone value of incoming resources. If fences are not ``maximal", there is interest in deviating for both players. Assume fences are not ``maximal'' in patch $A$. If landowner $A$ raises more fences, then it retains even more resource, and foregoes a little more of the incoming flow : as long as the net benefits of doing so are larger than the opportunity cost, there is always an incentive to increase the fence. 
+
+%The emerging questions : 
+%\begin{itemize}
+%\item How does the harvesting rate change
+%\item In what other cases would they not fence even if the spatial externality is present? Like is there a mutually beneficial situation? (for ex one with low productivity but large  value v. large productivity but low value?)
+%\end{itemize}
+
+\section{Background}
+
+This article builds on two strands of literature, related respectively to the optimal harvest of spatial resources and public good provision in networks.
+
+First, \cite{Swanson1994} offers a thorough and insightful analysis of the overexploitation problem, restating \cite{clark_profit_1973}'s seminal contribution as a portfolio allocation problem, where rival land uses ultimately determine the fate of species. However, his analysis does not account for the spatial heterogeneity in portfolio returns. A wealth of articles have since incorporated the spatial layer in the analysis, with varying degrees of complexity.  \cite{brown_metapopulation_1997} study a model of metapopulation with private property and a common pool for barnacles in an optimization framework, but assume uniform connectivity accross space. While it paves the way for further research, this approach \textit{de facto} limits the role played by space. \cite{sanchirico_bioeconomics_1999} develop a more general framework of spatial connectivity in a discrete patchy environment, and analyze the consequences of spatial processes in the \cite{clark_profit_1973} model of open access fishery. They include dispersal patterns that can depend on relative densities, following a gravity equation. As they adopt an \enquote{open access} perspective, they do not investigate the optimal harvest rules that take into account endogenous dispersal while paving the way for such an analysis. \cite{costello_optimal_2008} develop a discrete, stochastic model for the optimal harvest of a spatially distributed resource. They investigate the presence of interior and corner solutions (e.g. positive or null harvest), and find an elegant, time and state independent general solution to the optimal harvest problem. They find a constant, patch specific harvest rule to be optimal. Economic and biological heterogeneity across space cause different harvest rates. Eventually, dispersal patterns affect optimal harvests. \cite{costello_optimal_2008} thus derive an optimal solution in a state independent context, that does not acknowledge the endogeneity of dispersal processes. As \cite{sanchirico_bioeconomics_1999}, \cite{costello_optimal_2008} were developped with marine ecosystems as a focal example, they may have failed to recognize the rival uses that land faces \citep{Swanson1994} as well as potential actions that change the dispersal rates across spaces. My approach acknowledges the endogenous nature of dispersal processes through different action margins, and shows that accounting for the endogenous nature of dispersal changes optimal harvest, and optimal no-take zones. \cite{fabbri_competition_2022} use fixed, weighted directed graphs to model the dynamics of a spatially distributed population that grows linearly. They find similar results to \cite{costello_optimal_2008} in a graph theoretical framework, and show that designing cost effective reserves in an network can be done using the notion of eigencentrality of a graph. Indeed, the least central nodes (e.g. those that contribute the less to the aggregate growth of a species absent harvesting) should be conserved, and the allocation of conserved areas should follow eigencentrality ranking.
+
+ \cite{costello_private_2017} tackles the private eradication of mobile public bads and connects the optimal resource management resource to the public good literature. They consider the non-cooperative equilibrium when private landowners control a stock of a spatially distributed public bad which causes non linear damages and incurs non linear costs of control. They derive the conditions under which the Markov Perfect Nash Equilibrium results in large or low public bad control provision. Depending on the distribution of marginal damages and costs to eradication, they show that subsets of the landscape emerge where eradication is optimal, while others only control. As dispersal remains exogenous, their model can be interpreted as a generalization of \cite{bramoulle_public_2007}, in a directed, weighted graph setting with non-linear payoffs. In the present article, I use a dispersal matrix that depends on choice variables, although constrained by exogenous, immutable parameters. I study how different action margins affect dispersal, and how the interplay between population stocks and connectivity decisions affect the optimal harvesting strategies.\\
+
+Indeed, pioneering the literature on public goods in networks, \cite{bramoulle_public_2007} characterize the equilibria emerging from varying undirected, unweighted network structures, in the case of linear payoffs to the public good, and show that networks structure can lead to specialization (e.g. optimal contribution \textit{v.} free-riding), where agents position in the network determine if they contribute or not. In their framework, specialization can lead to welfare benefits, when contributors are linked to many other individuals. Eventually, they show that more links can lead to welfare reduction, as access to the public good increases and reduces individual incentives to contribute. \cite{bramoulle_strategic_2014} extend this framework to relate graph theoretical statistics applied to fixed, non directed graphs and the existence, multiplicity, and stability of static Nash equilibria. Using spectral graph theory and potential games with in linear best reply games, they show that the lowest eigenvalue is the key statistic in the presence of strategic substitutes. It measures the direct effects of agents onto one another : when one increases its contribution, others tend to reduce it, triggering chain reactions. When the lowest eigenvalue is large, effects can take multiple directions and Nash equilibria are multiple. With low mininimal eigenvalue, the effects are dampened, and a unique equilibrium emerges. Considering two action margins, \cite{chen_multiple_2018} extend results from the single action margin in the case of quadratic games with linear best-reply functions, thus paving the way to analyze the interplay of multiple action margins in the dynamic equilibrium of ecological economic networks. \cite{elliott_network_2019} focus on non-rival heterogeneous benefits and show that the Pareto efficient outcome can be characterized using a network of marginal externalities in a public good problem. They show that the Pareto efficient is such that the largest eigenvalue of this network is 1. Finally this article extends \cite{griffith_continuous_2022}, who develops a model of network formation allowing for asymetric, weighted links, when agents maximize their utility, including a public good, with continuous links. \cite{griffith_continuous_2022} shows that Nash equilibria, in a static setting, depend on the returns to scale of \enquote{link surplus} (e.g the surplus from forming links). I extend this approach to the case of spatial natural resources, where harvesting and connectivity decisions have returns that depend on others decisions. 
+
+
+\section{A model of endogenous ecological economic network formation}
+
+\subsection{Spatial ecology}
+Assume land is divided in $N$ patches $i \in \{1, ..., N\}$, with baseline population of a focal species $X_{i0}$. In each patch, and each period $t$, the resource is harvested, and grows. As habitat quality is heterogeneously distributed across patches, so is biological growth $g_i(X_{it})$, with $g_i'(X_{it}) \geq 0$, $g_i''(X_{it})\leq 0$. After it grows, the resource disperses across patches. Dispersal is influenced by natural, immutable, parameters, and fencing. 
+The rates of outgoing mobility from patch $i$ to all other patches $j \neq i$ and the rate of own retention in $i$ sum to 1. Fencing reduces the rate of outgoing mobility, and ingoing mobility. Typically, when one fences its land, it decreases the rate of outgoing mobility more than when a neighbor fences its land. Eventually, fencing decreases mobility at a decreasing rate. Formally : 
+
+\begin{align}
+\forall t, d_{ijt+1} : \mathbb{R}^2 \rightarrow & [\underline{d_{ij}}; \Bar{d_{ijt}}] \in [0,1] \\
+\sum_{j = 1}^N & d_{ij}(f_{it},f_{jt}) = 1 \\
+\frac{\partial d_{ijt+1}}{\partial f_{it}} \leq 0 , &\frac{\partial d_{ijt+1}}{\partial f_{jt}} \leq 0  \text{ and } 
+\left| \frac{\partial d_{ijt+1}}{\partial f_{it}}\right| \geq \left|\frac{\partial d_{ijt+1}}{\partial f_{jt}}\right|\\
+\frac{\partial^2 d_{ijt+1}}{\partial f_{it}^2}\geq 0 \text{ and }& \frac{\partial^2 d_{ijt+1}}{\partial f_{it} \partial f_{jt}} \geq 0
+\end{align}
+
+At the beginning of period $t+1$, the population in each patch is:
+
+\begin{equation}
+X_{it+1} = \sum_{j=1}^N d_{jit+1}(f_{jt}, f_{it})g_j(e_{jt})
+\end{equation}
+
+Or in matrix form, with $\mathbf{D}_t$ an $n\times n$ matrix such that element $(i,j)$ is $d_{ijt}$, $\mathbf{g}$ a function from $\mathbb{R}^{n}$ to $\mathbb{R}^n$ such that $\mathbf{g}_i = g_i()$, and $\mathbf{e}_t$ the $n \times 1$ vector of escapements, and $\mathbf{D}^\intercal$ representing the transpose of matrix $\mathbf{D}$: 
+\begin{equation}
+ \mathbf{X}_{t+1} = \mathbf{D}^\intercal_{t+1}\mathbf{g}(\mathbf{e}_t)
+\end{equation}
+
+\subsection{Harvest and fencing}
+
+In each patch, the landowner harvests the resource, at a fixed price $p$ is earned, with the cost of harvesting depends on the population stock size, such that the profit from harvesting is : 
+\begin{equation}
+p(X_{it} - e_{it}) - \int_{e_{it}}^{X_{it}}c_i(s)ds
+\end{equation}
+With marginal cost of harvest $c_i(s)>0$ and $c'_i(s)\leq 0$, e.g., the larger the initial stock, the smaller the marginal harvesting cost.  Building fences reduces the outflow and inflow of resources at cost $c_{i}^f(f_{it})$ with $c_{i}^{f'}()>0$ and $c_{i}^{f''} \geq 0$. The total profit for landowner $i$ in period $t$ is : 
+\begin{equation}
+\Pi(e_{it},f_{it}) = p(X_{it} - e_{it}) - \int_{e_{it}}^{X_{it}}c_i(s)ds - c_{i}^f(f_{it})
+\end{equation}
+
+
+Figure \ref{fig:timing} summarizes the timing of the model. \\\\
+
+This ecological economic framework can be viewed as a weighted, directed, dynamic graph $\mathcal{G}_t = (\mathcal{V}_t, \mathcal{E}_t)$, where each patch $i$ corresponds to a vertex $v_{it} \in \mathcal{V}_t$.
+
+Each edge $e_{ijt} \in \mathcal{E}_t$ from patch $i$ to $j$ is given by $d_{ijt+1}(f_{it},f_{jt})$. The dispersal matrix $\mathcal{D}_{t}$ can be viewed as a generalization of \cite{fabbri_competition_2022} with endogenous flow rates. 
+
+%Second, the landowner has preferences $1 - \alpha_i$ for conservation. The benefits from conserving the species are site specific $e_{it}^{\beta_i}$. Overall, the objective function of patch owner $i$ is : 
+%\begin{equation}
+%\alpha_i \left(p - \int_{e_{it}}^{X_{it}}c_i(s)ds \right) + (1 - \alpha_i) e_{it}^{\beta_i}
+%\end{equation}
+
+\section{Results}
+\subsection{Intuitions from a simplified example}
+In this section, I show the basic insights from a 2 by 2 model, e.g, 2 patches and 2 periods model, before generalizing them to the $N$ patches. In what follows, I assume fences are costless (e.g $\forall f_{it}$ $c_{i}^f(f_{it}) = 0$, and that the marginal cost of harvesting is constant but heterogeneous (e.g $c_i(s) = c_i$), and $\$c_i<p$ for $i \in \{A,B\}$.
+
+\subsubsection{Optimal harvesting and fencing}
+
+When a sole owner is in charge of managing land, its objective function is: 
+\begin{equation}
+\begin{aligned}
+\max_{ \{e_{i1}, e_{i2}, f_{i1} \}_{i \in \{A,B\}}} & p(X_{A1} - e_{A1}) - p(X_{B1} - e_{B1}) - \int_{e_{A1}}^{X_{A1}}c_A(s)ds - \int_{e_{B1}}^{X_{B1}}c_B(s)ds \\
++ & \delta \left(p\left( X_{A2} - e_{A2} \right) - \int_{e_{A2}}^{X_{A2}}c_A(s)ds  + p\left( X_{B2} - e_{B2} \right) - \int_{e_{B2}}^{X_{B2}}c_B(s)ds \right) \\
+\text{Such that : }\\
+& X_{i2} = (1 - d_{ij2}(f_{i1}, f_{j1}))g_i(e_{i1}) + d_{ji2}(f_{j1}, f_{i1})g_j(e_{j1}) \text{ for } i,j \in \{ A,B \}
+\end{aligned}
+\end{equation}
+
+Given that there is no continuation after period $2$, and that the marginal cost $c_i$ is lower than the marginal revenue from harvesting, in period 2, $e_{A2} = e_{B2} = 0$. The first order condition for an interior optimal escapement in period $1$ and patch $A$ (symmetric in $B$) : 
+%\begin{equation*}
+%-p + c_A(e_{A1}) + \delta\left[(1 - d_{AB2}(f_{A1},f_{B1}))\frac{\partial g_A}{\partial e_{A1}}(p   - c_A) + d_{AB2}(f_{A1},f_{B1})\frac{\partial g_A}{\partial e_{A1}}( p - c_B)\right] = 0
+%\end{equation*}
+\begin{align}
+\frac{\partial g_A(e_{A1})}{\partial e_{A1}}& = \frac{1}{\delta} \frac{p - c_A}{(1 - d_{AB2}(f_{A1}, f_{B1}))(p-c_A) + d_{AB2}(f_{A1}, f_{B1})(p - c_B)} 
+\label{eq:optimal_escapement_simpleA}\\
+\frac{\partial g_B(e_{B1})}{\partial e_{B1}}& = \frac{1}{\delta} \frac{p - c_B}{(1 - d_{BA2}(f_{B1}, f_{A1}))(p-c_B) + d_{BA2}(f_{B1}, f_{A1})(p - c_A)}
+\label{eq:optimal_escapement_simpleB}
+\end{align}
+Equations \ref{eq:optimal_escapement_simpleA} and \ref{eq:optimal_escapement_simpleB} are a simplified version of \cite{costello_optimal_2008}. In this case, optimal harvesting of the resource explicitly takes into account the structure of the spatial externality, and adjusts local harvesting for it, if there are differences in net benefits. For example, if patch $A$ is more efficient at harvesting than in $B$ (e.g $c_A<c_B$), and the resource flows largely remains in $A$, the growth rate of the resource tends to $1/\delta$, i.e the growth rate tends to the financial rate of return and the resource is harvested efficiently. However, if the resource flows largely to $B$, the resource is further harvested : indeed, of all the population that is not harvested today, a substantial share $d_{AB2}(f_{A1}, f_{B1})$ will be harvested in period $2$ in patch $2$ at a lower unit value. In the absence of net benefit heterogeneity, each patch is harvested efficiently, where the rate of growth of the resource equals the financial rate of return. 
+
+Moreover, equation \ref{eq:optimal_escapement_simpleA} and \ref{eq:optimal_escapement_simpleB} show that, when there is a net benefit difference from harvesting, the optimal escapement increases with fences in the largest benefit patch, while it decreases in the least beneficial patch. 
+
+For positive fencing in the optimum, the first order conditions yield: 
+\begin{align}
+\left[\frac{\partial d_{AB2}}{\partial f_{A1}}g_A(e_{A1}) - \frac{\partial d_{BA2}}{\partial f_{A1}}g_{B}(e_{B1})\right]\left[c_A - c_B\right] \geq 0
+\label{eq:foc_fA1}\\
+\left[\frac{\partial d_{AB2}}{\partial f_{B1}}g_A(e_{A1}) - \frac{\partial d_{BA2}}{\partial f_{B1}}g_{B}(e_{B1})\right]\left[c_A - c_B\right] \geq 0
+\label{eq:foc_fB1}
+\end{align}
+
+First, when there is \textbf{no cost heterogeneity}, it is optimal not to fence : indeed, the net value extracted from both patches is identical, so there is no spatial arbitrage potential to be leveraged, hence no control over the dispersal of the resource is needed. 
+
+If net benefits are heterogeneous ($c_A < c_B$), positive fencing can be optimal. For fencing to arise in a patch $A$, it must be that: 
+\begin{align*}
+\frac{\partial d_{AB2}}{\partial f_{A1}}g_A(e_{A1}) & \geq  \frac{\partial d_{BA2}}{\partial f_{A1}}g_{B}(e_{B1})\\
+\frac{\partial d_{AB2}}{\partial f_{B1}}g_A(e_{A1}) &\geq \frac{\partial d_{BA2}}{\partial f_{B1}}g_{B}(e_{B1})
+\end{align*}
+
+Bearing in mind that $\frac{\partial d_{ijt+1}}{\partial f_{it}}<0$, this result states that fencing in patch $A$ is optimal as long as the retained outflow of resource outweighs the forgone inflow of resource from $B$ to $A$ incurred by fencing in each patch. Although patch $B$ produces less net benefits from harvesting than patch $A$, fencing in $B$ can be optimal if it causes more resource outflow to be retained in $A$ than the retained outflow in $B$. For an interior solution to arise, the marginal rate of transformation of dispersal is equal in both patches : fencing in $A$ and $B$ is such that the ratio of marginal productivities of fencing in $A$ and $B$ are equal for both outflow rates.
+
+If fencing always retains more inflow in patch $A$ than in patch $B$, an equilibrium arises where fencing in both patches is such that $\frac{\partial d_{AB2}}{\partial f_{i1}}=0$ and the outflow rate from patch $A$ to $B$ is minimized. If $\underline{d_{AB}}=0$, optimal fencing solves the spatial externality and leads to patch specific efficient harvest. 
+
+Notice that even though the resource is more valuable in patch $A$, it is not necessarily optimal to fence in $A$ nor $B$. For example, if patch $A$ is much less biologically productive than patch $B$, fencing in $A$ and $B$ is suboptimal. Moreover, if fencing in $B$ substantially reduces the outflow from $B$ to $A$ but only marginally reduces the outflow from $A$ to $B$, then it is optimal not to fence in $B$ : the resource flow harvested in $A$ would not substantially increase, while the movement from $B$ to $A$ would be hampered, and resources would remain in the low value patch.
+% In a sense, this mechanisms is akin to the dynamic between self protection and self insurance \citep{ehrlich_market_1972} : when given the opportunity, a sole owner will reduce the spread in returns between patches. The opportunity to redirect the resources 
+
+%When fencing is made available, if there are no cost heterogeneity,
+%\begin{itemize}
+%\item Source sink dynamics arise from ecological and economic conditions
+%\item In some cases, fencing is better
+%\item In other not necessarily : say that with clarity. 
+%\item Maybe little box when it is optimal to fence and thus to promote fencing and not, with the associated stock sizes. 
+%\item Methodological comments on state independence?
+%\end{itemize}
+
+\subsubsection{Non cooperative equilibrium}
+In this section, two patch owners $A$ and $B$ aim at maximizing their profits. As dispersal from one patch to an other amounts to a loss of resources to be harvested, they want to reduce connectivity to maximize their profit. Each patch owner maximizes the following : 
+
+\begin{equation}
+\begin{aligned}
+\max_{e_{i1}, e_{i2}, f_{i1}}
+ & p(X_{i1} - e_{i1}) - \int_{e_{i1}}^{X_{i1}}c_i(s)ds 
++ \delta \left(p\left( X_{i2} - e_{i2} \right) - \int_{e_{i2}}^{X_{i2}}c_i(s)ds  \right) \\
+\text{Such that : }\\
+& X_{i2} = (1 - d_{ij2}(f_{i1}, f_{j1}))g_i(e_{i1}) + d_{ji2}(f_{j1}, f_{i1})g_j(e_{j1}) \text{ for } i,j \in \{ A,B \}
+\end{aligned}
+\end{equation}
+
+\subsubsection{Insights from the simplified framework}
+
+In an optimally managed ecological network, the temporal and spatial distribution of population stocks is jointly determined by the relative benefits of harvesting and fencing. Cost heterogeneity is an important driver of the network structure : in absence of cost heterogeneity, optimal harvesting does not depend on the spatial structure, and each patch is harvested at the "golden rule" \citep{clark_profit_1973}. The endogenous dispersal matrix is indeterminate, if fencing is costless, and fixed at its initial conditions if fencing is homogenously costly. 
+
+When harvesting costs are heterogeneous, biological heterogeneity matters. If biological productivity follows a distribution inversely correlated with costs (i.e. large costs and low biological productivity v. low costs and large biological productivity), in a costless scenario, fencing is positive and determined by relative biological productivities as well as marginal efficiencies of fencing at reducing outflow in both patches. An extreme case arises when fencing always retains more in flow in patch $A$ than in $B$, where the endogenous dispersal matrix converges to $\mathbf{I}_2$, e.g, the spatial externality is fully corrected, and harvest is such that the biological rate of return equals the financial rate of return.
+Source-sink dynamics, for example, are determined by the extent of biological productivities, but also by the extent of net benefits heterogeneity. Finally, note that in that case, the optimal escapement increases in patch $A$ and decreases in patch $B$ compared to the no fencing equilibrium. Under certain conditions, this can result can yield in an aggregate increase in population. In these conditions, policies regarding fencing can be a primary tool for conservation, while allowing for larger harvest.
+
+
+Overall, the sole owner aims at leveraging spatial arbitrage opportunities. In doing so, she increases the flows to the most profitable (or productive) patch, while reducing the flows to the least profitable (or productive) patch. For substantial differences in net benefits negatively correlated with substantial differences in biological productivities, the optimal management of the resource implies to fence and change the dispersal of the species, and welfare increases in doing so. Enforcing a no-fence equilibrium (akin to that of the literature) is suboptimal, while enforcing a fencing equilibrium with patch-specific golden rules of harvest is optimal. 
+
+\section{Next steps}
+\subsection{Generalization}
+I intend to :
+\begin{itemize}
+\item Generalize the insights from the 2 by 2 model, using dynamic programming. Given the nature of the problem, I expect the optimal harvesting and fencing rule to be state and time independent. 
+\item Derive proof that rank the no-fencing/optimal harvesting; fencing/optimal harvesting; non-cooperative equilibrium outcomes
+\item Include heterogeneity in the dispersal bounds : indeed, dispersal is not only a function of choices and is determined by exogenous factors. It is clear that the margins of action determine the outcomes, as the marginal efficiency of fencing in reducing dispersal reaches 0 at different levels of fencing. 
+\item From a theoretical perspective, I think what I am after, here, resembles \cite{ehrlich_market_1972} and the interplay between self protection and self insurance, in a spatial context, for a sole owner. Although all of it is not present, it amounts to playing on the probability (dispersal) and outcome (profit from harvest) in a case where self protection (fencing) impacts the relative price of insurance (e.g the net benefits from harvests).\\
+Put a brief explanation of Ehrlich and Becker.
+\end{itemize}
+
+
+\subsection{Graph theoretical formulation}
+This article is ultimately concerned with network formation. I think key insights from graph theoretical formulations can be gained. In the context of designing efficient reserves under budget constrained, \cite{fabbri_competition_2022} use the eigencentrality of patches in the connected resource network to find the most cost effective reserves. 
+ \cite{elliott_network_2019} map the matrix of marginal benefits from providing a public good, and hence, the marginal contributions across players. My intuition here is that it is possible to \textit{relate the endogenous dispersal matrix to the benefits matrix and conditions on the eigenvalues of the benefits matrix that shape the optimal and equilibrium structure of the network}. The ultimate goal would be to have solutions in terms of optimal network structure and equilibrium network structure that depend on graph theoretical statistics. 
+
+\subsection{Policy}
+
+
+
+\subsection{Empirics}
+I think I need help in figuring out the empirical section of this article. I have two ideas : 
+\begin{enumerate}
+\item Using data from wildfires or wildlife
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    % Draw the arrow
+    \draw[->] (0,0) -- (16,0) node[anchor=north] {$t+1$};
+    % Draw ticks and labels
+    \draw (0, .1)--(0,-.1) node[anchor = north]{$t$};
+    \draw (2, .1)--(2,-.1) node[anchor = north, text width = 2.5cm]{Observe $D_t$ and invest in fences  $f_{t}$};
+    \draw (6, .1)--(6,-.1) node[anchor = north, text width = 2.5cm]{Observe $X_t$ harvest and yield residual stock $e_t$};
+    \draw (10, .1)--(10,-.1) node[anchor = north, text width = 2.5cm]{Growth from residual stock $g(e_t)$};
+    \draw (14,.1)--(14,-.1) node[anchor = north, text width = 2.5cm]{Dispersal to other patches with $D_{ijt+1}$};
+  \end{tikzpicture}
+  \caption{Timing of the model}
+  \label{fig:timing}
+  
+\end{figure}
+\newpage
+\bibliography{resources}
+
+\end{document}
